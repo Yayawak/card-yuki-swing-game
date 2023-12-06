@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package blackjackofshadowduel.Card;
+import blackjackofshadowduel.types.ActorSideEnum;
 
 /**
  *
@@ -20,8 +21,9 @@ public class MagicCard extends AbstractCard {
     
     
     
-    public MagicCard (int theMagic ){
-        magiccard = theMagic;    
+    public MagicCard (int theMagic, String pathToCard){
+        magiccard = theMagic;
+        super.pathToCard = pathToCard;
     }
     
      public int getMagic(){
@@ -39,6 +41,19 @@ public class MagicCard extends AbstractCard {
             case ls: return "ls";
             case pg: return "pg";
             default:  return "Invalid Value Code";
+        }
+    }    
+
+    @Override
+    public void useCard(ActorSideEnum side) 
+    {
+        if (side == ActorSideEnum.Player)
+        {
+            
+        }
+        else
+        {
+            
         }
     }
 }

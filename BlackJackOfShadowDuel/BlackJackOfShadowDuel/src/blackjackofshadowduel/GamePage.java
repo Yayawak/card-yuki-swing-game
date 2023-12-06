@@ -5,6 +5,9 @@
 package blackjackofshadowduel;
 import javax.swing.*;
 import java.awt.*;
+import blackjackofshadowduel.Card.CardPanelWrapper;
+
+
 
 public class GamePage extends javax.swing.JFrame 
 {
@@ -14,18 +17,36 @@ public class GamePage extends javax.swing.JFrame
     //MagicCard magic = new Magic();
 
     public GamePage() {
-         initComponents();
+        initComponents();
          
         gameDeck.shuffle();
         
-         playerHand.addCard(gameDeck.draw());
-         PlayerCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+playerHand.lastCard()+".png")));
+        playerHand.addCard(gameDeck.draw());
+        PlayerCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+playerHand.lastCard()+".png")));
       
-         dealerHand.addCard(gameDeck.draw());
-         DealerCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+dealerHand.lastCard()+".png")));
+        dealerHand.addCard(gameDeck.draw());
+        DealerCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+dealerHand.lastCard()+".png")));
         
-         playerHand.addCard(gameDeck.draw());
-         PlayerCard2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+playerHand.lastCard()+".png")));
+        playerHand.addCard(gameDeck.draw());
+        PlayerCard2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+playerHand.lastCard()+".png")));
+         
+        
+        initCards();
+        
+//        GameManager.getInstance()
+        
+    }
+    
+    private void initCards()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            CardPanelWrapper wrapper = new CardPanelWrapper();
+//            wrapper.add(this)
+            this.cardGridPanel.add(
+                wrapper
+            );
+        }
     }
     
     private void A()
@@ -96,6 +117,7 @@ public class GamePage extends javax.swing.JFrame
         ScoreLabel = new javax.swing.JLabel();
         Player_Panel = new javax.swing.JPanel();
         Dealer_Panel = new javax.swing.JPanel();
+        cardGridPanel = new javax.swing.JPanel();
         magic = new javax.swing.JButton();
         hit = new javax.swing.JButton();
         rtomenu = new javax.swing.JButton();
@@ -133,6 +155,10 @@ public class GamePage extends javax.swing.JFrame
         Dealer_Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Dealer_Panel.setLayout(new java.awt.GridLayout(1, 6));
         getContentPane().add(Dealer_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 240, 30));
+
+        cardGridPanel.setBackground(new java.awt.Color(255, 153, 51));
+        cardGridPanel.setLayout(new java.awt.GridLayout(1, 4, 25, 0));
+        getContentPane().add(cardGridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 430, 120));
 
         magic.setText("USE MAGIC CARD");
         getContentPane().add(magic, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 520, -1, -1));
@@ -183,19 +209,19 @@ public class GamePage extends javax.swing.JFrame
 
         PlayerCard1.setBackground(new java.awt.Color(255, 255, 255));
         PlayerCard1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(PlayerCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 110, 140));
+        getContentPane().add(PlayerCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 110, 140));
 
         PlayerCard2.setBackground(new java.awt.Color(255, 255, 255));
         PlayerCard2.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(PlayerCard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 110, 140));
+        getContentPane().add(PlayerCard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 110, 140));
 
         PlayerCard3.setBackground(new java.awt.Color(255, 255, 255));
         PlayerCard3.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(PlayerCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 110, 140));
+        getContentPane().add(PlayerCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 110, 140));
 
         PlayerCard4.setBackground(new java.awt.Color(255, 255, 255));
         PlayerCard4.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(PlayerCard4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 110, 140));
+        getContentPane().add(PlayerCard4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 110, 140));
 
         MagicCard.setBackground(new java.awt.Color(255, 255, 255));
         MagicCard.setForeground(new java.awt.Color(255, 255, 255));
@@ -316,6 +342,7 @@ public class GamePage extends javax.swing.JFrame
     private javax.swing.JPanel PlayerScorePanel;
     private javax.swing.JPanel Player_Panel;
     private javax.swing.JLabel ScoreLabel;
+    private javax.swing.JPanel cardGridPanel;
     private javax.swing.JButton hit;
     private javax.swing.JButton magic;
     private javax.swing.JButton rtomenu;
