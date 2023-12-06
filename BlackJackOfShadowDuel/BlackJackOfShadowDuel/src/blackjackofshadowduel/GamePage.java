@@ -6,11 +6,27 @@ package blackjackofshadowduel;
 import javax.swing.*;
 import java.awt.*;
 import blackjackofshadowduel.Card.CardPanelWrapper;
+import blackjackofshadowduel.types.BlackjackEnums;
+import static blackjackofshadowduel.types.BlackjackEnums.Dealer;
+import static blackjackofshadowduel.types.BlackjackEnums.Player;
+import static blackjackofshadowduel.types.BlackjackEnums.Tie;
 
 
 
 public class GamePage extends javax.swing.JFrame 
-{
+{   
+    private static GamePage instance;
+    
+    public static GamePage getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new GamePage();
+        }
+        return instance;
+    }
+    
+ 
     Deck gameDeck = new Deck();
     Hand playerHand = new Hand();
     Hand dealerHand = new Hand();
@@ -271,25 +287,25 @@ public class GamePage extends javax.swing.JFrame
             else if(dealerHand.getNumberOfCards()==4){
                 DealerCard4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+dealerHand.lastCard()+".png")));  
             }
-        }while (dealerHand.getHandValue() < 16);     
+        }while (dealerHand.getNumberOfCards() <= 4);     
         
-        if ((dealerHand.getHandValue()>21 && playerHand.getHandValue()>21) || dealerHand.getHandValue() ==  playerHand.getHandValue())
-        {
-            Draw d = new Draw();
-            d.setVisible(true);
-        }
+        BlackjackEnums winner = isWinning(playerHand, dealerHand);
         
-        else if((dealerHand.getHandValue()>21 && playerHand.getHandValue()<=21)  || dealerHand.getHandValue() < playerHand.getHandValue()) 
-        {
-            Win w = new Win();
-            w.setVisible(true);  
-        }
-        
-        else if((playerHand.getHandValue()>21) || dealerHand.getHandValue() >  playerHand.getHandValue())
-        {
-            Lose l= new Lose();
-            l.setVisible(true);
-        }
+        String message;
+        switch (winner) {
+        case Player:
+            message = "You Win!";
+            break;
+        case Dealer:
+            message = "You Lose!";
+            break;
+        case Tie:
+            message = "It's a Tie!";
+            break;
+        default:
+            message = "";
+    }
+//        resultFrame.setVisible(true);
     }//GEN-LAST:event_standActionPerformed
 
     /**
@@ -325,6 +341,40 @@ public class GamePage extends javax.swing.JFrame
                 new GamePage().setVisible(true);
             }
         });
+    }
+    
+    public BlackjackEnums isWinning(Hand playerHand, Hand dealerHand) {
+    int playerHandValue = playerHand.getHandValue();
+    int dealerHandValue = dealerHand.getHandValue();
+
+    // Check for Blackjack
+    if (playerHandValue == 21 && dealerHandValue != 21) {
+        return BlackjackEnums.Player;
+    } else if (dealerHandValue == 21 && playerHandValue != 21) {
+        return BlackjackEnums.Dealer;
+    }
+
+    // Check for bust
+    if (playerHandValue > 21 && dealerHandValue <= 21) {
+        return BlackjackEnums.Dealer;
+    } else if (dealerHandValue > 21 && playerHandValue <= 21) {
+        return BlackjackEnums.Player;
+    } else if (playerHandValue > 21 && dealerHandValue > 21) {
+        return BlackjackEnums.Tie;
+    }
+
+    // Find the side that is closer to 21
+    int playerDifference = Math.abs(playerHandValue - 21);
+    int dealerDifference = Math.abs(dealerHandValue - 21);
+
+    if (playerDifference < dealerDifference) {
+        return BlackjackEnums.Player;
+    } else if (playerDifference > dealerDifference) {
+        return BlackjackEnums.Dealer;
+    } else {
+        // If equal, it's a tie
+        return BlackjackEnums.Tie;
+    }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

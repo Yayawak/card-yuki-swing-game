@@ -4,6 +4,8 @@
  */
 package blackjackofshadowduel;
 
+import blackjackofshadowduel.types.BlackjackEnums;
+
 /**
  *
  * @author avondale
@@ -27,3 +29,7 @@ public class GameManager {
     
     
 }
+
+    
+     
+

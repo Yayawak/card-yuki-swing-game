@@ -63,9 +63,12 @@ public class MagicCard extends AbstractCard {
         if(side == ActorSideEnum.Player){
             switch (magiccard) {
                 case 0:
-                    
+//                    if(score >21){
+//                        statue = win;
+//                    }
                     break;
                 case 1:
+                    
                     break;
                 case 2:
                     break;

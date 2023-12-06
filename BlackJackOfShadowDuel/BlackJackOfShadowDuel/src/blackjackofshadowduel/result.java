@@ -4,16 +4,18 @@
  */
 package blackjackofshadowduel;
 
+import blackjackofshadowduel.types.BlackjackEnums;
+
 /**
  *
  * @author Sigsauer
  */
-public class Draw extends javax.swing.JFrame {
+public class Result extends javax.swing.JFrame {
 
     /**
-     * Creates new form Draw
+     * Creates new form Win
      */
-    public Draw() {
+    public Result() {
         initComponents();
     }
 
@@ -26,9 +28,13 @@ public class Draw extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        messageLabel = new javax.swing.JLabel();
         ReturnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(253, 126));
+
+        messageLabel.setText("message");
 
         ReturnButton.setText("Return to menu");
         ReturnButton.addActionListener(new java.awt.event.ActionListener() {
@@ -42,27 +48,59 @@ public class Draw extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(261, Short.MAX_VALUE)
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addComponent(ReturnButton)
-                .addGap(26, 26, 26))
+                .addGap(60, 60, 60))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(messageLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(252, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(messageLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(ReturnButton)
-                .addGap(25, 25, 25))
+                .addGap(36, 36, 36))
         );
 
+        messageLabel.getAccessibleContext().setAccessibleName("message");
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnButtonActionPerformed
         // TODO add your handling code here:
+        Hand playerHand = new Hand(); // Get the player's hand from your game logic
+        Hand dealerHand =  new Hand(); // Get the dealer's hand from your game logic
+
+        BlackjackEnums winner = GamePage.getInstance().isWinning(playerHand, dealerHand);
+        
+        String message;
+        switch (winner) {
+        case Player:
+            message = "You Win!";
+            break;
+        case Dealer:
+            message = "You Lose!";
+            break;
+        case Tie:
+            message = "It's a Tie!";
+            break;
+        default:
+            message = "";
+    }
+
+    // Display the appropriate message in the Win frame
+        messageLabel.setText(message);
         Start s = new Start();
         s.setVisible(true);
         GamePage g = new GamePage();
         g.setVisible(false);
+        
         dispose();
     }//GEN-LAST:event_ReturnButtonActionPerformed
 
@@ -83,25 +121,26 @@ public class Draw extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Draw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Result.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Draw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Result.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Draw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Result.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Draw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Result.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Draw().setVisible(true);
+                new Result().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ReturnButton;
+    private javax.swing.JLabel messageLabel;
     // End of variables declaration//GEN-END:variables
 }

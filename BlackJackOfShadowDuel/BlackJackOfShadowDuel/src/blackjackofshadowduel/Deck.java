@@ -22,7 +22,7 @@ public class Deck
         {    
             this.cardDeck.add(
                     new Card(i,
-                    String.valueOf(i))
+                    "/BasicDeck/"+String.valueOf(i)+".png")
             );
         }
       
