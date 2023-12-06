@@ -25,5 +25,12 @@ public class GameManager {
         
     }
     
+    public void endGame()
+    {
+        System.out.println("End game because heart is out of stock.");
+        // ************** RESET GAME -> crate new JFrame of GamePage -> Delete Old one
+        
+    }
+    
     
 }
