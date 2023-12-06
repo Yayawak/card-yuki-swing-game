@@ -12,7 +12,16 @@ import java.awt.*;
 public class CardPanelWrapper extends JPanel {
     public CardPanelWrapper()
     {
-        this.setSize(new Dimension(110, 140));
+        this.setLayout(new BorderLayout());
+//        this.setPreferredSize(preferredSize);
+//        this.setPreferredSize(new Dimension(110, 140));
         this.setBackground(Color.red);
+    }
+    
+    public void setCard(Card c)
+    {
+        removeAll();
+        add(c, BorderLayout.CENTER);
+        revalidate();
     }
 }
