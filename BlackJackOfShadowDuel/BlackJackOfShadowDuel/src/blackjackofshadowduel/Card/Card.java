@@ -3,16 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package blackjackofshadowduel.Card;
-
+import javax.swing.*;
 import blackjackofshadowduel.types.ActorSideEnum;
+import java.awt.Image;
 
 public class Card extends AbstractCard
 {
     private final int value;
     
-    public Card (int theValue )
+    public Card (int theValue, String pathToCard)
     {
+        super.pathToCard = pathToCard;
         value = theValue;    
+    
+        
+        var imgIcon = new javax.swing.ImageIcon(
+                getClass().getResource(pathToCard)
+        );
+        
+        var img = imgIcon.getImage();
+        img = img.getScaledInstance(            
+            240, 30,
+            Image.SCALE_DEFAULT
+        );
+        imageLabel.setIcon(new ImageIcon(img));
+        add(imageLabel);
     }
     
     public int getValue()

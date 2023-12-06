@@ -20,12 +20,17 @@ public class Deck
       
         for(int i = 1; i < 13; i++)
         {    
-            this.cardDeck.add(new Card(i));
+            this.cardDeck.add(
+                    new Card(i,
+                    String.valueOf(i))
+            );
         }
       
         for(int i = 1; i < 6; i++)
         {    
-            this.magicDeck.add(new MagicCard(i));
+            this.magicDeck.add(
+                    new MagicCard(i,
+                    String.valueOf(i)));
         }
     }
     
