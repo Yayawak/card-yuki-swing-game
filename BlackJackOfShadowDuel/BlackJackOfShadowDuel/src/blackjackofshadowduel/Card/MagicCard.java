@@ -4,6 +4,8 @@
  */
 package blackjackofshadowduel.Card;
 
+import blackjackofshadowduel.types.ActorSideEnum;
+
 /**
  *
  * @author Sigsauer
@@ -40,5 +42,41 @@ public class MagicCard extends AbstractCard {
             case pg: return "pg";
             default:  return "Invalid Value Code";
         }
+    }
+     
+    public void magicCardskill(int magiccard,ActorSideEnum side){
+        if(side == ActorSideEnum.Player){
+            switch (magiccard) {
+                case 0:
+                    
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+        }else{
+            switch (magiccard) {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
+    @Override
+    public void useCard(ActorSideEnum side) {
+        
     }
 }
