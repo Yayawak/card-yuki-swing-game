@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package blackjackofshadowduel;
+package blackjackofshadowduel.Card;
 
 /**
  *
  * @author Sigsauer
  */
-public class MagicCard {
+public class MagicCard extends AbstractCard {
     
     public final static int cd = 0;
     public final static int er = 1;
@@ -28,7 +28,6 @@ public class MagicCard {
        
         return magiccard;
     }
-     
      
      
      public String getMagicAsString(){

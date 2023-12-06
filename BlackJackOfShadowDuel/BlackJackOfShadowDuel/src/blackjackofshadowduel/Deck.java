@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package blackjackofshadowduel;
+import blackjackofshadowduel.Card.Card;
+import blackjackofshadowduel.Card.MagicCard;
 import java.util.Collections;
 import java.util.LinkedList;
 

@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package blackjackofshadowduel;
+package blackjackofshadowduel.Card;
 
-public class Card 
+import blackjackofshadowduel.types.ActorSideEnum;
+
+public class Card extends AbstractCard
 {
     private final int value;
     
@@ -42,4 +44,10 @@ public class Card
     {
         return getValueAsString();
     }
+
+    @Override
+    public void useCard(ActorSideEnum side) {
+    }
+    
+    
 }

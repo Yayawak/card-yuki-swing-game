@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package blackjackofshadowduel;
+import blackjackofshadowduel.Card.Card;
 import java.util.LinkedList;
 
 public class Hand {

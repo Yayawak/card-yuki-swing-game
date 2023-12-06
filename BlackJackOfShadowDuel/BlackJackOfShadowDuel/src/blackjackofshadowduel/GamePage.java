@@ -17,10 +17,13 @@ public class GamePage extends javax.swing.JFrame
          initComponents();
          
         gameDeck.shuffle();
+        
          playerHand.addCard(gameDeck.draw());
          PlayerCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+playerHand.lastCard()+".png")));
+      
          dealerHand.addCard(gameDeck.draw());
          DealerCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+dealerHand.lastCard()+".png")));
+        
          playerHand.addCard(gameDeck.draw());
          PlayerCard2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BasicDeck/"+playerHand.lastCard()+".png")));
     }
@@ -62,11 +65,13 @@ public class GamePage extends javax.swing.JFrame
             var imgIcon = new javax.swing.ImageIcon(getClass().getResource(pathToPlayerHeart));
             var img = imgIcon.getImage();
             System.out.println(
-                    
+//               Player_Panel.getPreferredSize()
+//               Player_Panel.getLayout().preferredLayoutSize(Player_Panel)
             );
             img = img.getScaledInstance(
-               Player_Panel.getPreferredSize().width, 
-                    Player_Panel.getPreferredSize().height,
+//               Player_Panel.getPreferredSize().width, 
+//                    Player_Panel.getPreferredSize().height,
+                    240, 30,
                     Image.SCALE_DEFAULT
             );
             heartLabel.setIcon(new ImageIcon(img));
@@ -75,10 +80,7 @@ public class GamePage extends javax.swing.JFrame
             
             
             revalidate();
-//          for (int i = 0; i < playerHand.getNumberOfCards(); i++)
-//          {
-//              
-//          }
+
     }
 
     /**
@@ -90,6 +92,8 @@ public class GamePage extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PlayerScorePanel = new javax.swing.JPanel();
+        ScoreLabel = new javax.swing.JLabel();
         Player_Panel = new javax.swing.JPanel();
         Dealer_Panel = new javax.swing.JPanel();
         magic = new javax.swing.JButton();
@@ -111,15 +115,24 @@ public class GamePage extends javax.swing.JFrame
         setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        PlayerScorePanel.setBackground(new java.awt.Color(51, 204, 255));
+        PlayerScorePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        PlayerScorePanel.setLayout(new java.awt.BorderLayout());
+
+        ScoreLabel.setText("jLabel1");
+        PlayerScorePanel.add(ScoreLabel, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(PlayerScorePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 40, 40));
+
         Player_Panel.setBackground(new java.awt.Color(255, 102, 102));
         Player_Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Player_Panel.setLayout(new java.awt.GridLayout(1, 6));
-        getContentPane().add(Player_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 240, 30));
+        getContentPane().add(Player_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 240, 30));
 
         Dealer_Panel.setBackground(new java.awt.Color(153, 255, 204));
         Dealer_Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Dealer_Panel.setLayout(new java.awt.GridLayout(1, 6));
-        getContentPane().add(Dealer_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 240, 30));
+        getContentPane().add(Dealer_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 240, 30));
 
         magic.setText("USE MAGIC CARD");
         getContentPane().add(magic, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 520, -1, -1));
@@ -300,7 +313,9 @@ public class GamePage extends javax.swing.JFrame
     private javax.swing.JLabel PlayerCard2;
     private javax.swing.JLabel PlayerCard3;
     private javax.swing.JLabel PlayerCard4;
+    private javax.swing.JPanel PlayerScorePanel;
     private javax.swing.JPanel Player_Panel;
+    private javax.swing.JLabel ScoreLabel;
     private javax.swing.JButton hit;
     private javax.swing.JButton magic;
     private javax.swing.JButton rtomenu;
