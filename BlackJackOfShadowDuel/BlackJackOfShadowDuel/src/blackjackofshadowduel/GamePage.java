@@ -114,16 +114,17 @@ public class GamePage extends javax.swing.JFrame
     private void initComponents() {
 
         dealerGridPanel = new javax.swing.JPanel();
-        useMagicBtn = new javax.swing.JButton();
-        hitBtn = new javax.swing.JButton();
         rtomenu = new javax.swing.JButton();
-        drawMagicBtn = new javax.swing.JButton();
-        stand = new javax.swing.JButton();
         playerParts = new javax.swing.JPanel();
         playerCardGridPanel = new javax.swing.JPanel();
         playerHeartPanel = new javax.swing.JPanel();
         playerScorePanel = new javax.swing.JPanel();
         playerMagicPanel = new javax.swing.JPanel();
+        buttonsPanel = new javax.swing.JPanel();
+        useMagicBtn = new javax.swing.JButton();
+        hitBtn = new javax.swing.JButton();
+        drawMagicBtn = new javax.swing.JButton();
+        stand = new javax.swing.JButton();
         DealerCard4 = new javax.swing.JLabel();
         DealerCard3 = new javax.swing.JLabel();
         DealerCard2 = new javax.swing.JLabel();
@@ -144,20 +145,6 @@ public class GamePage extends javax.swing.JFrame
         dealerGridPanel.setLayout(new java.awt.GridLayout(1, 6));
         getContentPane().add(dealerGridPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 240, 30));
 
-        useMagicBtn.setText("USE MAGIC CARD");
-        getContentPane().add(useMagicBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 520, -1, -1));
-
-        hitBtn.setText("HIT");
-        hitBtn.setMaximumSize(new java.awt.Dimension(125, 23));
-        hitBtn.setMinimumSize(new java.awt.Dimension(125, 23));
-        hitBtn.setPreferredSize(new java.awt.Dimension(125, 23));
-        hitBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hitBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(hitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, 140, -1));
-
         rtomenu.setText("Return to menu");
         rtomenu.setPreferredSize(new java.awt.Dimension(125, 23));
         rtomenu.addActionListener(new java.awt.event.ActionListener() {
@@ -166,28 +153,6 @@ public class GamePage extends javax.swing.JFrame
             }
         });
         getContentPane().add(rtomenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 140, 20));
-
-        drawMagicBtn.setText("DRAW MAGIC CARD");
-        drawMagicBtn.setMaximumSize(new java.awt.Dimension(125, 23));
-        drawMagicBtn.setMinimumSize(new java.awt.Dimension(125, 23));
-        drawMagicBtn.setPreferredSize(new java.awt.Dimension(125, 23));
-        drawMagicBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                drawMagicBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(drawMagicBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 140, -1));
-
-        stand.setText("STAND");
-        stand.setMaximumSize(new java.awt.Dimension(125, 23));
-        stand.setMinimumSize(new java.awt.Dimension(125, 23));
-        stand.setPreferredSize(new java.awt.Dimension(125, 23));
-        stand.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                standActionPerformed(evt);
-            }
-        });
-        getContentPane().add(stand, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 490, 140, -1));
 
         playerCardGridPanel.setBackground(new java.awt.Color(255, 153, 51));
         playerCardGridPanel.setLayout(new java.awt.GridLayout(1, 4, 25, 0));
@@ -204,11 +169,52 @@ public class GamePage extends javax.swing.JFrame
         playerMagicPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         playerMagicPanel.setLayout(new java.awt.GridLayout());
 
+        buttonsPanel.setBackground(new java.awt.Color(204, 255, 204));
+
+        useMagicBtn.setText("USE MAGIC CARD");
+        buttonsPanel.add(useMagicBtn);
+
+        hitBtn.setText("HIT");
+        hitBtn.setMaximumSize(new java.awt.Dimension(125, 23));
+        hitBtn.setMinimumSize(new java.awt.Dimension(125, 23));
+        hitBtn.setPreferredSize(new java.awt.Dimension(125, 23));
+        hitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hitBtnActionPerformed(evt);
+            }
+        });
+        buttonsPanel.add(hitBtn);
+
+        drawMagicBtn.setText("DRAW MAGIC CARD");
+        drawMagicBtn.setMaximumSize(new java.awt.Dimension(125, 23));
+        drawMagicBtn.setMinimumSize(new java.awt.Dimension(125, 23));
+        drawMagicBtn.setPreferredSize(new java.awt.Dimension(125, 23));
+        drawMagicBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drawMagicBtnActionPerformed(evt);
+            }
+        });
+        buttonsPanel.add(drawMagicBtn);
+
+        stand.setText("STAND");
+        stand.setMaximumSize(new java.awt.Dimension(125, 23));
+        stand.setMinimumSize(new java.awt.Dimension(125, 23));
+        stand.setPreferredSize(new java.awt.Dimension(125, 23));
+        stand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                standActionPerformed(evt);
+            }
+        });
+        buttonsPanel.add(stand);
+
         javax.swing.GroupLayout playerPartsLayout = new javax.swing.GroupLayout(playerParts);
         playerParts.setLayout(playerPartsLayout);
         playerPartsLayout.setHorizontalGroup(
             playerPartsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playerPartsLayout.createSequentialGroup()
+                .addContainerGap(628, Short.MAX_VALUE)
+                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(playerPartsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(playerPartsLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -227,7 +233,9 @@ public class GamePage extends javax.swing.JFrame
         );
         playerPartsLayout.setVerticalGroup(
             playerPartsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playerPartsLayout.createSequentialGroup()
+                .addGap(0, 120, Short.MAX_VALUE)
+                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(playerPartsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(playerPartsLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -245,7 +253,7 @@ public class GamePage extends javax.swing.JFrame
         getContentPane().add(DealerCard4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 120, 140));
 
         DealerCard3.setText("   ");
-        getContentPane().add(DealerCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 110, 140));
+        getContentPane().add(DealerCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 110, 140));
 
         DealerCard2.setText("   ");
         getContentPane().add(DealerCard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 110, 140));
@@ -395,6 +403,7 @@ public class GamePage extends javax.swing.JFrame
     private javax.swing.JLabel PlayerCard2;
     private javax.swing.JLabel PlayerCard3;
     private javax.swing.JLabel PlayerCard4;
+    private javax.swing.JPanel buttonsPanel;
     private javax.swing.JPanel dealerGridPanel;
     private javax.swing.JButton drawMagicBtn;
     private javax.swing.JButton hitBtn;
