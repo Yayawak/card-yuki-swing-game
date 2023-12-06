@@ -55,9 +55,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="message"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="message"/>
-      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JButton" name="ReturnButton">
       <Properties>

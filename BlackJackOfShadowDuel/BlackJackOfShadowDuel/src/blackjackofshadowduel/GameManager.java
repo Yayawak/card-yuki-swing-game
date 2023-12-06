@@ -1,35 +1,49 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// GameManager.java
 package blackjackofshadowduel;
 
-import blackjackofshadowduel.types.BlackjackEnums;
+import blackjackofshadowduel.types.GamestateEnums;
 
-/**
- *
- * @author avondale
- */
 public class GameManager {
     private static GameManager instance;
-    
-    public static GameManager getInstance()
-    {
-        if (instance == null)
-        {
+
+    public static GameManager getInstance() {
+        if (instance == null) {
             instance = new GameManager();
         }
         return instance;
     }
-    
-    private GameManager()
-    {
+
+    private GameManager() {
         
     }
-    
-    
+
+    public GamestateEnums isPlayerwin(Hand playerHand, Hand dealerHand) {
+        int playerHandValue = playerHand.getHandValue();
+        int dealerHandValue = dealerHand.getHandValue();
+        
+        if (playerHandValue == 21 && dealerHandValue != 21) {
+            return GamestateEnums.Win;
+        } else if (dealerHandValue == 21 && playerHandValue != 21) {
+            return GamestateEnums.Lose;
+        } else if (playerHandValue > 21 && dealerHandValue <= 21) {
+            return GamestateEnums.Lose;
+        } else if (dealerHandValue > 21 && playerHandValue <= 21) {
+            return GamestateEnums.Win;
+        } else if (playerHandValue > 21 && dealerHandValue > 21) {
+            return GamestateEnums.Draw;
+        }else if (playerHandValue == 21 && dealerHandValue == 21) {
+            return GamestateEnums.Draw;
+        }
+
+        int playerDifference = Math.abs(playerHandValue - 21);
+        int dealerDifference = Math.abs(dealerHandValue - 21);
+
+        if (playerDifference < dealerDifference) {
+            return GamestateEnums.Win;
+        } else if (playerDifference > dealerDifference) {
+            return GamestateEnums.Lose;
+        } else {
+            return GamestateEnums.Draw;
+        }
+    }
 }
-
-    
-     
-

@@ -10,7 +10,7 @@ import javax.swing.*;
  * @author avondale
  */
 public abstract class AbstractCard extends JPanel {
-    public JLabel imageLabel;
-    public String pathToCard;
+    public JLabel imageLabel = new JLabel();
+    public String pathToCard ;
     public abstract void useCard(ActorSideEnum side);
 }

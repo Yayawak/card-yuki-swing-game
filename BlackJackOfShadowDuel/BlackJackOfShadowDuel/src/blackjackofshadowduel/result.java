@@ -4,7 +4,6 @@
  */
 package blackjackofshadowduel;
 
-import blackjackofshadowduel.types.BlackjackEnums;
 
 /**
  *
@@ -18,7 +17,9 @@ public class Result extends javax.swing.JFrame {
     public Result() {
         initComponents();
     }
-
+     public void setMessage(String message) {
+        messageLabel.setText(message);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,42 +67,15 @@ public class Result extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        messageLabel.getAccessibleContext().setAccessibleName("message");
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnButtonActionPerformed
-        // TODO add your handling code here:
-        Hand playerHand = new Hand(); // Get the player's hand from your game logic
-        Hand dealerHand =  new Hand(); // Get the dealer's hand from your game logic
-
-        BlackjackEnums winner = GamePage.getInstance().isWinning(playerHand, dealerHand);
-        
-        String message;
-        switch (winner) {
-        case Player:
-            message = "You Win!";
-            break;
-        case Dealer:
-            message = "You Lose!";
-            break;
-        case Tie:
-            message = "It's a Tie!";
-            break;
-        default:
-            message = "";
-    }
-
-    // Display the appropriate message in the Win frame
-        messageLabel.setText(message);
-        Start s = new Start();
+        GamePage s = new GamePage();
         s.setVisible(true);
         GamePage g = new GamePage();
-        g.setVisible(false);
-        
-        dispose();
+        g.setVisible(false);   
     }//GEN-LAST:event_ReturnButtonActionPerformed
 
     /**
@@ -132,10 +106,8 @@ public class Result extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Result().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Result().setVisible(true);
         });
     }
 

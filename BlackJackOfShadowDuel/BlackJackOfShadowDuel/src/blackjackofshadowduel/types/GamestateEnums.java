@@ -8,6 +8,6 @@ package blackjackofshadowduel.types;
  *
  * @author avondale
  */
-public enum BlackjackEnums {
-    Player, Dealer,Tie
+public enum GamestateEnums {
+    Win, Lose, Draw
 }

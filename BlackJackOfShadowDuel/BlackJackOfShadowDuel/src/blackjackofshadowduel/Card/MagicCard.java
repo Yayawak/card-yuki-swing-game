@@ -80,6 +80,7 @@ public class MagicCard extends AbstractCard {
         }else{
             switch (magiccard) {
                 case 0:
+                    
                     break;
                 case 1:
                     break;
