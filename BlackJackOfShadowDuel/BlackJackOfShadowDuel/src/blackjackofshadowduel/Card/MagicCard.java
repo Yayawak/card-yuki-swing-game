@@ -9,6 +9,8 @@ import blackjackofshadowduel.types.ActorSideEnum;
 import blackjackofshadowduel.Hand;
 import blackjackofshadowduel.types.GamestateEnums;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -28,7 +30,20 @@ public class MagicCard extends AbstractCard {
     
     public MagicCard (int theMagic, String pathToCard){
         magiccard = theMagic;
-        super.pathToCard = pathToCard;
+//        System.out.printf("Magic Card : %s\n", pathToCard);
+        super.setImage(pathToCard);
+        
+        
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {}
+            {
+                System.out.println("clicked on MagicCard");
+                
+                useCard(theMagic);
+            }
+        });
+        
     }
     
      public int getMagic(){
