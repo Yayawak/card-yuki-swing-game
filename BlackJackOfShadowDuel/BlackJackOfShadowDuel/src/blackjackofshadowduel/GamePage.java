@@ -104,6 +104,7 @@ public class GamePage extends javax.swing.JFrame
         PlayerCard3 = new javax.swing.JLabel();
         PlayerCard4 = new javax.swing.JLabel();
         MagicCard = new javax.swing.JLabel();
+        MagicCard1 = new javax.swing.JLabel();
         BGgame = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -201,7 +202,13 @@ public class GamePage extends javax.swing.JFrame
 
         MagicCard.setBackground(new java.awt.Color(255, 255, 255));
         MagicCard.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(MagicCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 110, 140));
+        MagicCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagesBG/backcard.jpeg"))); // NOI18N
+        getContentPane().add(MagicCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 110, 140));
+
+        MagicCard1.setBackground(new java.awt.Color(255, 255, 255));
+        MagicCard1.setForeground(new java.awt.Color(255, 255, 255));
+        MagicCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagesBG/backmagiccard.jpeg"))); // NOI18N
+        getContentPane().add(MagicCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 220, 110, 140));
 
         BGgame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagesBG/1280x720.jpg"))); // NOI18N
         BGgame.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -245,9 +252,9 @@ public class GamePage extends javax.swing.JFrame
             }
         }while (dealerHand.getHandValue() <= 18);     
 
-        GamestateEnums winner = GameManager.getInstance().isPlayerwin(playerHand, dealerHand);
+        GamestateEnums result = GameManager.getInstance().isPlayerwin(playerHand, dealerHand);
 
-        switch (winner) {
+        switch (result) {
             case Win:
                 message = "You Win!";
                 break;
@@ -315,6 +322,7 @@ public class GamePage extends javax.swing.JFrame
     private javax.swing.JLabel DealerCard4;
     private javax.swing.JPanel Dealer_Panel;
     private javax.swing.JLabel MagicCard;
+    private javax.swing.JLabel MagicCard1;
     private javax.swing.JLabel PlayerCard1;
     private javax.swing.JLabel PlayerCard2;
     private javax.swing.JLabel PlayerCard3;

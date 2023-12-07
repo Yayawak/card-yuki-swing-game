@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package blackjackofshadowduel.Card;
-import blackjackofshadowduel.types.ActorSideEnum;
 
+import blackjackofshadowduel.GameManager;
 import blackjackofshadowduel.types.ActorSideEnum;
+import blackjackofshadowduel.Hand;
+import blackjackofshadowduel.types.GamestateEnums;
+
 
 /**
  *
@@ -21,7 +24,7 @@ public class MagicCard extends AbstractCard {
     
     private final int magiccard;
     
-    
+    private boolean canPlayCard = true;
     
     public MagicCard (int theMagic, String pathToCard){
         magiccard = theMagic;
@@ -45,52 +48,52 @@ public class MagicCard extends AbstractCard {
             default:  return "Invalid Value Code";
         }
     }    
-
+     
     @Override
     public void useCard(ActorSideEnum side) 
     {
-        if (side == ActorSideEnum.Player)
-        {
-            
-        }
-        else
-        {
-            
+       if (canPlayCard) {
+//            if (side == ActorSideEnum.Player) {
+//                // Actions for the player side
+//            } else {
+//                // Actions for the opponent side
+//            }
         }
     }
      
-    public void magicCardskill(int magiccard,ActorSideEnum side){
+    public void ForceField(ActorSideEnum side){
+        canPlayCard = false;
+    }
+    
+    public void LightningStorm(ActorSideEnum side){
+        //pywp.heartSys.decreaseHeart();
+        //dlwp.heartSys.decreaseHeart();
+    }
+    
+    public void CompositionDepartment(ActorSideEnum side,Hand player,Hand dealer){
+        GamestateEnums result = GameManager.getInstance().isPlayerwin(player, dealer);
         if(side == ActorSideEnum.Player){
-            switch (magiccard) {
-                case 0:
-//                    if(score >21){
-//                        statue = win;
-//                    }
-                    break;
-                case 1:
-                    
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                default:
-                    break;
-            }
+            
         }else{
-            switch (magiccard) {
-                case 0:
-                    
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                default:
-                    break;
-            }
+            
+        }
+    }
+    
+    public void ExplosionRune(ActorSideEnum side,Hand player,Hand dealer){
+        GamestateEnums result = GameManager.getInstance().isPlayerwin(player, dealer);
+        if(side == ActorSideEnum.Player){
+            
+        }else{
+            
+        }
+    }
+    
+    public void PoisonedArrow(ActorSideEnum side,Hand player,Hand dealer){
+        GamestateEnums result = GameManager.getInstance().isPlayerwin(player, dealer);
+        if(side == ActorSideEnum.Player ){
+            
+        }else{
+            
         }
     }
 }
