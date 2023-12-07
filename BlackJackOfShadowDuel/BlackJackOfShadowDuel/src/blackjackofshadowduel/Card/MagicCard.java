@@ -66,14 +66,14 @@ public class MagicCard extends AbstractCard {
     }
     
     public void LightningStorm(ActorSideEnum side){
-        //pywp.heartSys.decreaseHeart();
-        //dlwp.heartSys.decreaseHeart();
+        pywp.heartSys.decreaseHeart();
+        dlwp.heartSys.decreaseHeart();
     }
     
     public void CompositionDepartment(ActorSideEnum side,Hand player,Hand dealer){
         GamestateEnums result = GameManager.getInstance().isPlayerwin(player, dealer);
         if(side == ActorSideEnum.Player){
-            
+            //protection
         }else{
             
         }
@@ -82,18 +82,30 @@ public class MagicCard extends AbstractCard {
     public void ExplosionRune(ActorSideEnum side,Hand player,Hand dealer){
         GamestateEnums result = GameManager.getInstance().isPlayerwin(player, dealer);
         if(side == ActorSideEnum.Player){
-            
+            if(result == GamestateEnums.Win){
+                pywp.heartSys.decreaseHeart();
+            }else if(result == GamestateEnums.Lose){
+                dlwp.heartSys.decreaseHeart();
+            }
         }else{
-            
+            if(result == GamestateEnums.Win){
+                dlwp.heartSys.decreaseHeart();
+            }else if(result == GamestateEnums.Lose){
+                pywp.heartSys.decreaseHeart();
+            }
         }
     }
     
     public void PoisonedArrow(ActorSideEnum side,Hand player,Hand dealer){
         GamestateEnums result = GameManager.getInstance().isPlayerwin(player, dealer);
         if(side == ActorSideEnum.Player ){
-            
+            if(result == GamestateEnums.Win){
+                dlwp.heartSys.decreaseHeart();
+            }
         }else{
-            
+            if(result == GamestateEnums.Lose){
+                pywp.heartSys.decreaseHeart();
+            }
         }
     }
 }
